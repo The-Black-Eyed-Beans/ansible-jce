@@ -6,7 +6,7 @@
   tags: provisioning
   
   vars_files:
-    - /vars/ec2_vars.yml
+    - ./vars/ec2_vars.yml
 
   tasks:
 
