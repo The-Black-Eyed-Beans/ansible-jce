@@ -1,0 +1,3 @@
+---
+- import_playbook: /modules/create_ec2.yml host_group_name="jenkins_hosts"
+- import_playbook: /modules/install_jenkins.yml
