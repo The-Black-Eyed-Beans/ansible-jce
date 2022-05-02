@@ -1,0 +1,19 @@
+---
+- name: Deploy Artifactory on EC2 instance
+  hosts: artifactory_hosts
+  vars:
+    create_ec2: disabled
+    artifactory_version: oss
+
+  tasks:
+  - name: Create EC2 instance
+    import_playbook: ./modules/create_ec2.yml host_group_name="artifactory_hosts"
+    when: create_ec2 == "enabled"
+
+  - name: Install Docker
+    import_playbook: ./modules/install_docker.yml host="artifactory_hosts"
+
+  - name: Run Artifactory Docker image
+    shell: > 
+      docker run --name JCE-Artifactory-"{{ artifactory_version }}" -d -p 8081:8081 -p 8082:8082 
+      docker.bintray.io/jfrog/artifactory-"{{ artifactory_version }}"":latest
