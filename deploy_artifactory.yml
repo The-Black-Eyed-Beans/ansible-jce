@@ -7,7 +7,7 @@
 
   tasks:
   - name: Create EC2 instance
-    import_playbook: ./modules/create_ec2.yml host_group_name="artifactory_hosts"
+    import_playbook: ./modules/create_ec2.yml host_group_name="artifactory_hosts" ec2_name="JCE-Artifactory-{{ artifactory_version }}"
     when: create_ec2 == "enabled"
 
   - name: Install Docker
