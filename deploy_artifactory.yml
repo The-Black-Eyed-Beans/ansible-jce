@@ -8,10 +8,6 @@
     artifactory_version: oss
 
   tasks:
-  - name: Create EC2 instance
-    when: create_ec2 == "enabled"
-
-  - name: Install Docker
 
   - name: Run Artifactory Docker image
     shell: > 
