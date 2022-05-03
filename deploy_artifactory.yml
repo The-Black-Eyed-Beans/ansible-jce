@@ -67,10 +67,6 @@
       - containerd.io
       - docker-compose-plugin
     when: ansible_distribution== "CentOS"
-  vars:
-    ansible_ssh_private_key_file: "{{ pem_key }}"
-    create_ec2: disabled
-    artifactory_version: oss
 
   # tasks:
 
