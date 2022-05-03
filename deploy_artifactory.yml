@@ -1,6 +1,6 @@
 ---
 - import_playbook: ./modules/create_ec2.yml host_group_name="artifactory_hosts" ec2_name="JCE-Artifactory-{{ artifactory_version }}"
-- import_playbook: ./modules/install_docker.yml host="artifactory_hosts"
+- import_playbook: ./modules/install_docker.yml host="artifactory_hosts" remote_user="ec2-user"
 - name: Deploy Artifactory on EC2 instance
   hosts: artifactory_hosts
   vars:

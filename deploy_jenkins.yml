@@ -1,3 +1,3 @@
 ---
 - import_playbook: ./modules/create_ec2.yml host_group_name="jenkins_hosts"
-- import_playbook: ./modules/install_jenkins.yml
+- import_playbook: ./modules/install_jenkins.yml host="jenkins_hosts" remote_user="ec2-user"
