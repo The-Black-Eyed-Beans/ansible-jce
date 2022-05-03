@@ -16,32 +16,34 @@
       - curl
       - gnupg
       - lsb-release
-    when: ansible_distribution== "Ubuntu"
+    when: ansible_distribution == "Ubuntu"
 
   - name: Install yum-utils package (CentOS)
     yum:
       name: yum-utils
       state: present
       update_cache: yes
-    when: ansible_distribution== "CentOS"
+    when: ansible_distribution == "CentOS" or
+          ansible_distribution == "Amazon"
 
   - name: Add Docker's official GPG key (Ubuntu)
     shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    when: ansible_distribution== "Ubuntu"
+    when: ansible_distribution == "Ubuntu"
 
   - name: Set up stable Docker repository (Ubuntu)
     shell: |
       echo \
       "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    when: ansible_distribution== "Ubuntu"
+    when: ansible_distribution == "Ubuntu"
 
   - name: Set up the Docker repository (CentOS)
     shell: |
       yum-config-manager \
       --add-repo \
       https://download.docker.com/linux/centos/docker-ce.repo
-    when: ansible_distribution== "CentOS"
+    when: ansible_distribution == "CentOS" or
+          ansible_distribution == "Amazon"
 
   - name: Install Docker Engine (Ubuntu)
     apt:
@@ -52,7 +54,7 @@
       - docker-ce
       - docker-ce-cli
       - docker-compose-plugin
-    when: ansible_distribution== "Ubuntu"
+    when: ansible_distribution == "Ubuntu"
 
   - name: Install Docker Engine (CentOS)
     yum:
@@ -64,4 +66,5 @@
       - docker-ce-cli
       - containerd.io
       - docker-compose-plugin
-    when: ansible_distribution== "CentOS"
+    when: ansible_distribution == "CentOS" or
+          ansible_distribution == "Amazon"
