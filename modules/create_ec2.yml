@@ -48,8 +48,8 @@
       args:
         tags:
           Name: "{{ ec2_name }}"
-    - name: Add to Jenkins Hosts
+    - name: Add to "{{ host_group_name }}" Hosts
       add_host:
         hostname: "{{ item.public_ip }}"
         groupname: "{{ host_group_name }}"
-        with_items: "{{ ec2.instances }}"
+      with_items: "{{ ec2.instances }}"
