@@ -1,7 +1,7 @@
 ---
 - name: Install Docker on defined hosts
   hosts: "{{ host }}"
-  remote_user: "{{ remote_user}}"
+  remote_user: "{{ user}}"
   
   tasks:
   - name: Install Docker Dependencies (Ubuntu)
@@ -15,7 +15,7 @@
       - gnupg
       - lsb-release
     when: ansible_distribution== "Ubuntu"
-    
+
   - name: Install yum-utils package (CentOS)
     yum:
       name: yum-utils
