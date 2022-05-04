@@ -67,3 +67,7 @@
       - containerd.io
       - docker-compose-plugin
     when: ansible_distribution == "CentOS"
+
+  - name: Start Docker service (CentOS)
+    shell: systemctl start docker
+    when: ansible_distribution == "CentOS"
