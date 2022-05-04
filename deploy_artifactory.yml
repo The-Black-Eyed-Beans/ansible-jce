@@ -13,6 +13,7 @@
       wait_for:
         host: "{{ host }}"
         port: 22
+        timeout: 120
 
 - name: Install Docker
   import_playbook: ./modules/install_docker.yml
