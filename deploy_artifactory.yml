@@ -9,10 +9,8 @@
   hosts: localhost
   connection: local
   tasks: 
-    - name: Wait for SSH to be available
+    - name: Wait for 2 minutes
       wait_for:
-        host: "{{ host }}"
-        port: 22
         timeout: 120
 
 - name: Install Docker
