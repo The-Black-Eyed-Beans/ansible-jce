@@ -9,9 +9,9 @@
   hosts: localhost
   connection: local
   tasks: 
-    - name: Wait for 2 minutes
+    - name: Wait for 5 minutes
       wait_for:
-        timeout: 120
+        timeout: 300
 
 - name: Install Docker
   import_playbook: ./modules/install_docker.yml
