@@ -4,7 +4,10 @@
   vars:
     host_group_name: "{{ host }}"
     ec2_name: "JCE-Artifactory-{{ artifactory_version }}"
-
+- name: Allow time for EC2 to spin up
+  wait_for:
+    host: "{{ host }}"
+    port: 22
 - name: Install Docker
   import_playbook: ./modules/install_docker.yml
   vars:
