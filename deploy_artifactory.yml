@@ -29,8 +29,8 @@
     artifactory_version: oss
 
   tasks:
-
   - name: Run Artifactory Docker image
+    become: yes
     shell: > 
       docker run --name JCE-Artifactory-"{{ artifactory_version }}" -d -p 8081:8081 -p 8082:8082 
       docker.bintray.io/jfrog/artifactory-"{{ artifactory_version }}":latest
