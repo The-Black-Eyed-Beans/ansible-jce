@@ -9,8 +9,9 @@
   hosts: localhost
   connection: local
   tasks: 
-    - name: Wait for SSH to be available on "{{ host }}" 5 minutes
-      wait_for:
+    - name: Wait for SSH to be available on "{{ host }}" or 5 minutes
+      local_action:
+        module: wait_for:
         host: "{{ host }}"
         port: 22
         delay: 10
