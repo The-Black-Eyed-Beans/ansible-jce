@@ -16,7 +16,7 @@
         port: 22
         delay: 10
         timeout: 300
-      with_items: groups['{{ host }}']
+      with_items: "{{ groups[host] }}"
 
 - name: Install Docker
   import_playbook: ./modules/install_docker.yml
