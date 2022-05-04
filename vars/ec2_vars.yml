@@ -1,7 +1,8 @@
 ---
 keypair: jce-ssh
 instance_type: t2.micro
-image: ami-00ee4df451840fa9d 
+# image: ami-00ee4df451840fa9d # Amazon Linux
+image: ami-0cb4e786f15603b0d # Ubuntu 20.04 LTS
 wait: yes
 group: webserver
 count: 1

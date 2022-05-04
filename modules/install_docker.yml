@@ -23,8 +23,7 @@
       name: yum-utils
       state: present
       update_cache: yes
-    when: ansible_distribution == "CentOS" or
-          ansible_distribution == "Amazon"
+    when: ansible_distribution == "CentOS"
 
   - name: Add Docker's official GPG key (Ubuntu)
     shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -43,8 +42,7 @@
       yum-config-manager \
       --add-repo \
       https://download.docker.com/linux/centos/docker-ce.repo
-    when: ansible_distribution == "CentOS" or
-          ansible_distribution == "Amazon"
+    when: ansible_distribution == "CentOS"
 
   - name: Install Docker Engine (Ubuntu)
     apt:
@@ -67,5 +65,4 @@
       - docker-ce-cli
       - containerd.io
       - docker-compose-plugin
-    when: ansible_distribution == "CentOS" or
-          ansible_distribution == "Amazon"
+    when: ansible_distribution == "CentOS"
