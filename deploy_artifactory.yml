@@ -7,10 +7,10 @@
 
 - name: Allow time for EC2 to spin up
   tasks: 
-    -name: Wait for SSH to be available
-    wait_for:
-      host: "{{ host }}"
-      port: 22
+    - name: Wait for SSH to be available
+      wait_for:
+        host: "{{ host }}"
+        port: 22
 
 - name: Install Docker
   import_playbook: ./modules/install_docker.yml
